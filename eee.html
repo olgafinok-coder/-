@@ -1,0 +1,624 @@
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио AI-навыков — Щебланина Ольга Леонидовна</title>
+  <style>
+    :root{
+      --bg-0:#070A12;
+      --bg-1:#0B1220;
+      --card: rgba(255,255,255,.06);
+      --card-2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.90);
+      --muted: rgba(255,255,255,.70);
+      --soft: rgba(255,255,255,.55);
+      --accent-1:#7C3AED; /* violet */
+      --accent-2:#22D3EE; /* cyan  */
+      --accent-3:#F59E0B; /* amber */
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --shadow2: 0 10px 28px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius2: 26px;
+      --max: 1120px;
+      --ring: 0 0 0 3px rgba(34,211,238,.22);
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    /* Reset-ish */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 18% 12%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 82% 10%, rgba(34,211,238,.28), transparent 55%),
+        radial-gradient(900px 600px at 50% 92%, rgba(245,158,11,.16), transparent 55%),
+        linear-gradient(180deg, var(--bg-0), var(--bg-1));
+      overflow-x:hidden;
+    }
+
+    a{color:inherit}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:24px 18px 60px;
+    }
+
+    /* Decorative grid */
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.25;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(70% 55% at 50% 25%, #000 55%, transparent 100%);
+    }
+
+    /* Header */
+    header{
+      position:relative;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius2);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(1200px 600px at 0% 0%, rgba(124,58,237,.30), transparent 60%),
+        radial-gradient(900px 550px at 100% 0%, rgba(34,211,238,.22), transparent 58%),
+        radial-gradient(900px 600px at 40% 120%, rgba(245,158,11,.12), transparent 58%);
+      filter: blur(0px);
+      opacity:.9;
+      pointer-events:none;
+    }
+    header > *{position:relative; z-index:1}
+
+    .topline{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.20);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing:.2px;
+    }
+    .badge i{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      box-shadow: 0 0 0 3px rgba(124,58,237,.15);
+      flex:0 0 auto;
+    }
+
+    /* Gradient text title with transparency effect */
+    .title{
+      margin: 6px 0 0;
+      font-size: clamp(30px, 4.5vw, 54px);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(90deg,
+        rgba(124,58,237,1) 0%,
+        rgba(34,211,238,1) 45%,
+        rgba(245,158,11,1) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      opacity: .92;
+      text-shadow:
+        0 0 28px rgba(34,211,238,.08),
+        0 0 34px rgba(124,58,237,.10);
+    }
+
+    .subtitle{
+      margin: 10px 0 0;
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .meta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: var(--soft);
+      font-size: 13px;
+    }
+    .pill svg{opacity:.9}
+
+    /* Layout */
+    main{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+
+    @media (max-width: 940px){
+      main{grid-template-columns: 1fr; }
+    }
+
+    section{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      position:relative;
+    }
+    section::after{
+      content:"";
+      position:absolute;
+      inset:auto -50px -65px auto;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.18), transparent 55%);
+      filter: blur(0px);
+      pointer-events:none;
+    }
+
+    .h2{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin: 0 0 12px;
+    }
+    h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .2px;
+    }
+    .accent-line{
+      height:10px;
+      width: 86px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(124,58,237,.85), rgba(34,211,238,.85));
+      opacity:.9;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    /* Skill cards with hover animation */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+    @media (max-width: 620px){
+      .cards{grid-template-columns: 1fr;}
+    }
+
+    .card{
+      position:relative;
+      padding: 16px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+      overflow:hidden;
+      min-height: 150px;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(260px 180px at 15% 20%, rgba(124,58,237,.22), transparent 55%),
+                  radial-gradient(260px 180px at 85% 20%, rgba(34,211,238,.18), transparent 55%);
+      opacity:.65;
+      pointer-events:none;
+      transition: opacity .22s ease;
+    }
+    .card > *{position:relative; z-index:1}
+
+    .card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(34,211,238,.35);
+      box-shadow: 0 18px 46px rgba(0,0,0,.50);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    }
+    .card:hover::before{opacity:1}
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+      margin: 0 0 10px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+      box-shadow: 0 0 0 3px rgba(34,211,238,.12);
+      flex:0 0 auto;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: .1px;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    /* Case blocks */
+    .case{
+      margin-top: 14px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(245,158,11,.22);
+      background:
+        linear-gradient(180deg, rgba(245,158,11,.10), rgba(255,255,255,.03));
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .case::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(380px 220px at 15% 20%, rgba(245,158,11,.18), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .case > *{position:relative; z-index:1}
+    .case-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 8px;
+    }
+    .case-title strong{
+      font-size: 14px;
+      letter-spacing:.2px;
+    }
+    .flag{
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-family: var(--mono);
+    }
+    .case ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
+    }
+
+    /* Tools tags */
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 12px;
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+      user-select:none;
+    }
+    .tag:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,58,237,.30);
+      background: rgba(255,255,255,.06);
+    }
+    .tag b{
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 12px;
+      color: rgba(255,255,255,.72);
+    }
+
+    /* Side panel */
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
+    }
+
+    .stat{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .stat .box{
+      padding: 14px;
+      border-radius: var(--radius2);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      position:relative;
+      overflow:hidden;
+    }
+    .stat .box::before{
+      content:"";
+      position:absolute;
+      inset:auto -60px -60px auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.20), transparent 60%);
+      pointer-events:none;
+    }
+    .stat .box > *{position:relative; z-index:1}
+    .label{
+      font-size: 12px;
+      color: var(--soft);
+      letter-spacing: .18px;
+      text-transform: uppercase;
+    }
+    .value{
+      margin-top: 6px;
+      font-size: 16px;
+      color: rgba(255,255,255,.88);
+      font-weight: 650;
+    }
+    .desc{
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 18px;
+      padding: 14px 2px 0;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .sep{
+      width:100%;
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 18px 0 6px;
+    }
+
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce){
+      .card, .tag{transition:none}
+      .card:hover, .tag:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="topline">
+        <span class="badge"><i></i> AI Skills Portfolio</span>
+        <span class="badge">Обновляется по мере новых кейсов</span>
+      </div>
+
+      <h1 class="title">Щебланина Ольга Леонидовна</h1>
+      <p class="subtitle">
+        Портфолио AI-навыков: практическое применение нейросетей и ChatGPT для автоматизации,
+        аналитики и подготовки управленческих материалов.
+      </p>
+
+      <div class="meta">
+        <span class="pill" title="Фокус">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7z" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
+          </svg>
+          Фокус: финансы · процессы · презентации
+        </span>
+        <span class="pill" title="Подход">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="1.6" opacity=".9"/>
+          </svg>
+          Подход: «понятно, структурно, внедряемо»
+        </span>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT: Skills & cases -->
+      <section>
+        <div class="h2">
+          <h2>1. Ключевые AI-навыки и практические кейсы</h2>
+          <span class="accent-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="kicker"><span class="dot"></span> CORE</div>
+            <h3>Понимаю и объясняю AI простым языком</h3>
+            <p>
+              Различаю ИИ, нейросети и ChatGPT — умею быстро донести отличия и
+              возможности без «техно-шума».
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="kicker"><span class="dot"></span> PRODUCTIVITY</div>
+            <h3>Автоматизация рутины и регламенты</h3>
+            <p>
+              Применяю нейросети для создания регламентов и ускорения повторяющихся
+              задач в офисной работе.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="kicker"><span class="dot"></span> FINANCE</div>
+            <h3>Финансовая аналитика и поддержка решений</h3>
+            <p>
+              Анализ финансового состояния компаний, план-факт анализ, поиск альтернативных
+              зависимостей и рекомендации по вопросам ФД.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="kicker"><span class="dot"></span> DELIVERY</div>
+            <h3>Материалы для управления и коммуникаций</h3>
+            <p>
+              Создание презентаций и аккуратных текстов, структура, логика, стиль подачи —
+              быстрее и стабильнее по качеству.
+            </p>
+          </article>
+        </div>
+
+        <div class="case" role="group" aria-label="Примеры кейсов">
+          <div class="case-title">
+            <strong>Примеры кейсов</strong>
+            <span class="flag">HIGHLIGHTS</span>
+          </div>
+          <ul>
+            <li>Формирование ковенантных пакетов договоров и типовых формулировок.</li>
+            <li>Аналитика финансового состояния компаний и подготовка выводов для руководства.</li>
+            <li>План-факт анализ и выявление отклонений + варианты управленческих решений.</li>
+            <li>Поиск альтернативных зависимостей и рекомендаций по вопросам финансового директора.</li>
+            <li>Подготовка презентаций: структура, тезисы, визуальная логика, корректный tone of voice.</li>
+          </ul>
+        </div>
+
+        <div class="sep" aria-hidden="true"></div>
+
+        <div class="h2">
+          <h2>Инструменты и форматы работы</h2>
+          <span class="accent-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="tags" aria-label="Сетка инструментов в виде тегов">
+          <span class="tag"><b>#</b> ChatGPT</span>
+          <span class="tag"><b>#</b> Нейросети</span>
+          <span class="tag"><b>#</b> Промт-инжиниринг</span>
+          <span class="tag"><b>#</b> Регламенты</span>
+          <span class="tag"><b>#</b> Автоматизация</span>
+          <span class="tag"><b>#</b> Финансовый анализ</span>
+          <span class="tag"><b>#</b> План-факт</span>
+          <span class="tag"><b>#</b> Ковенанты</span>
+          <span class="tag"><b>#</b> Презентации</span>
+          <span class="tag"><b>#</b> HTML</span>
+          <span class="tag"><b>#</b> Скрипты</span>
+        </div>
+      </section>
+
+      <!-- RIGHT: Achievements -->
+      <aside class="side">
+        <section>
+          <div class="h2">
+            <h2>Достижения</h2>
+            <span class="accent-line" aria-hidden="true"></span>
+          </div>
+
+          <div class="stat">
+            <div class="box">
+              <div class="label">Результат</div>
+              <div class="value">Инвестиционный меморандум (FMCG)</div>
+              <div class="desc">
+                С привлечением ИИ разработан инвестиционный меморандум: структура,
+                формулировки, ускорение подготовки и вычитки.
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="label">Техника</div>
+              <div class="value">Промты для скриптов и HTML</div>
+              <div class="desc">
+                Написание промтов для генерации скриптов и HTML-разметки, ускорение
+                прототипирования и оформления материалов.
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="label">Подход</div>
+              <div class="value">Системность + качество подачи</div>
+              <div class="desc">
+                Чёткая логика, визуальная иерархия и акценты: чтобы «понятно с первого раза»
+                и можно было использовать в работе.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer>
+          <span>© Портфолио AI-навыков</span>
+          <span style="font-family:var(--mono); opacity:.85;">v1 · responsive</span>
+        </footer>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Лёгкая интерактивность: акцент при фокусе с клавиатуры (доступность)
+    document.querySelectorAll('.card, .tag, .pill, .badge').forEach(el => {
+      el.setAttribute('tabindex', '0');
+      el.addEventListener('focus', () => el.style.boxShadow = 'var(--ring)');
+      el.addEventListener('blur',  () => el.style.boxShadow = '');
+    });
+
+    // Микро-параллакс для шапки (деликатно, без перегруза)
+    const header = document.querySelector('header');
+    let raf = null;
+
+    function onMove(e){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        header.style.transform = `translate3d(${x*6}px, ${y*6}px, 0)`;
+      });
+    }
+
+    window.addEventListener('mousemove', onMove, {passive:true});
+    window.addEventListener('mouseleave', () => header.style.transform = '');
+  </script>
+</body>
+</html>
