@@ -1,0 +1,495 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио AI-навыков — Щебланина Ольга Леонидовна</title>
+
+  <style>
+    :root{
+      /* 1) Светло-серый фон + темно-серый текст */
+      --bg:#F3F4F6;              /* light gray */
+      --surface:#FFFFFF;         /* cards */
+      --surface2:#F9FAFB;        /* subtle blocks */
+      --text:#1F2937;            /* dark gray */
+      --muted:#4B5563;
+      --soft:#6B7280;
+      --stroke:#E5E7EB;
+
+      /* акценты */
+      --a1:#7C3AED;  /* violet */
+      --a2:#06B6D4;  /* cyan */
+      --a3:#F59E0B;  /* amber */
+
+      --shadow: 0 14px 36px rgba(17,24,39,.10);
+      --shadow2: 0 10px 24px rgba(17,24,39,.08);
+
+      --r1:16px;
+      --r2:22px;
+      --max:1120px;
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 10% 0%, rgba(124,58,237,.10), transparent 55%),
+        radial-gradient(900px 520px at 90% 0%, rgba(6,182,212,.10), transparent 55%),
+        linear-gradient(180deg, #F7F7F8, var(--bg));
+    }
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px;}
+
+    /* лёгкая сетка */
+    .grid{
+      position:fixed; inset:0; pointer-events:none; opacity:.22;
+      background-image:
+        linear-gradient(to right, rgba(17,24,39,.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(17,24,39,.06) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(70% 55% at 50% 15%, #000 55%, transparent 100%);
+    }
+
+    /* HEADER */
+    header{
+      position:relative;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.86));
+      border-radius: var(--r2);
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    header::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(900px 450px at 0% 0%, rgba(124,58,237,.14), transparent 60%),
+        radial-gradient(900px 450px at 100% 0%, rgba(6,182,212,.12), transparent 60%),
+        radial-gradient(900px 450px at 40% 120%, rgba(245,158,11,.10), transparent 60%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    header > *{position:relative; z-index:1}
+
+    .topline{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:10px;
+    }
+    .badge{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.75);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing:.15px;
+    }
+    .badge i{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--a1), var(--a2));
+      box-shadow: 0 0 0 3px rgba(6,182,212,.18);
+      flex:0 0 auto;
+    }
+
+    /* 2) Градиентный заголовок с прозрачностью */
+    .title{
+      margin:6px 0 0;
+      font-size: clamp(30px, 4.4vw, 54px);
+      line-height:1.05;
+      font-weight: 820;
+      letter-spacing:-0.03em;
+
+      background: linear-gradient(90deg, var(--a1) 0%, var(--a2) 45%, var(--a3) 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color: transparent;
+      opacity:.92;
+    }
+
+    .subtitle{
+      margin:10px 0 0;
+      font-size:16px;
+      color: var(--muted);
+      max-width: 80ch;
+    }
+
+    .meta{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:16px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.80);
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    /* LAYOUT */
+    main{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+    @media (max-width: 940px){
+      main{grid-template-columns:1fr;}
+    }
+
+    section{
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.92);
+      border-radius: var(--r2);
+      padding: 18px;
+      box-shadow: var(--shadow2);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .h2{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin: 0 0 12px;
+    }
+    h2{margin:0; font-size:18px; letter-spacing:.2px; color: var(--text);}
+
+    .accent-line{
+      height:10px; width:86px; border-radius:999px;
+      background: linear-gradient(90deg, rgba(124,58,237,.85), rgba(6,182,212,.85));
+      border:1px solid rgba(17,24,39,.08);
+      opacity:.95;
+    }
+
+    /* 2) Карточки навыков с анимацией */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 14px;
+      margin-top:10px;
+    }
+    @media (max-width: 620px){
+      .cards{grid-template-columns:1fr;}
+    }
+
+    .card{
+      position:relative;
+      padding: 16px 14px;
+      border-radius: var(--r1);
+      border: 1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(249,250,251,.96), rgba(255,255,255,.95));
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      overflow:hidden;
+      min-height: 150px;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(260px 180px at 15% 15%, rgba(124,58,237,.10), transparent 55%),
+        radial-gradient(260px 180px at 85% 10%, rgba(6,182,212,.10), transparent 55%);
+      opacity:.7;
+      pointer-events:none;
+      transition: opacity .22s ease;
+    }
+    .card > *{position:relative; z-index:1}
+
+    .card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(6,182,212,.30);
+      box-shadow: 0 18px 38px rgba(17,24,39,.14);
+    }
+    .card:hover::before{opacity:1}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--soft);
+      margin: 0 0 10px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: linear-gradient(135deg, var(--a2), var(--a1));
+      box-shadow: 0 0 0 3px rgba(6,182,212,.14);
+      flex:0 0 auto;
+    }
+    .card h3{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:.1px;
+      color: var(--text);
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    /* 4) Кейсы в выделенных блоках */
+    .case{
+      margin-top:14px;
+      border-radius: var(--r2);
+      border: 1px solid rgba(245,158,11,.35);
+      background: linear-gradient(180deg, rgba(245,158,11,.10), rgba(255,255,255,.92));
+      padding: 14px;
+      position:relative;
+      overflow:hidden;
+    }
+    .case::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(380px 220px at 20% 20%, rgba(245,158,11,.18), transparent 60%);
+      pointer-events:none;
+    }
+    .case > *{position:relative; z-index:1}
+    .case-title{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; margin-bottom:8px;
+    }
+    .flag{
+      font-size:12px;
+      color: var(--muted);
+      border:1px solid rgba(17,24,39,.10);
+      background: rgba(255,255,255,.70);
+      padding: 6px 10px;
+      border-radius:999px;
+      font-family: var(--mono);
+    }
+    .case ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+
+    .sep{width:100%; height:1px; background: rgba(17,24,39,.10); margin:18px 0 6px;}
+
+    /* 5) Теги инструментов */
+    .tags{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:12px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(249,250,251,.95);
+      color: var(--text);
+      font-size:13px;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      user-select:none;
+    }
+    .tag:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,58,237,.28);
+      box-shadow: 0 10px 20px rgba(17,24,39,.10);
+    }
+    .tag b{
+      font-family: var(--mono);
+      font-weight: 650;
+      font-size: 12px;
+      color: var(--soft);
+    }
+
+    /* RIGHT колонка */
+    .side{display:flex; flex-direction:column; gap:18px;}
+    .stat{display:grid; gap:12px;}
+    .box{
+      padding:14px;
+      border-radius: var(--r2);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(249,250,251,.96), rgba(255,255,255,.95));
+      position:relative;
+      overflow:hidden;
+    }
+    .box::before{
+      content:"";
+      position:absolute; inset:auto -60px -60px auto;
+      width:220px; height:220px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.12), transparent 60%);
+      pointer-events:none;
+    }
+    .box > *{position:relative; z-index:1}
+    .label{
+      font-size:12px;
+      color: var(--soft);
+      letter-spacing:.18px;
+      text-transform: uppercase;
+    }
+    .value{margin-top:6px; font-size:16px; font-weight:700; color: var(--text);}
+    .desc{margin-top:6px; font-size:13px; color: var(--muted); line-height:1.45;}
+
+    footer{
+      margin-top: 18px;
+      padding: 14px 2px 0;
+      color: rgba(31,41,55,.70);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* доступность */
+    .focusable:focus{outline:none; box-shadow: var(--ring);}
+    @media (prefers-reduced-motion: reduce){
+      .card,.tag{transition:none}
+      .card:hover,.tag:hover{transform:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="topline">
+        <span class="badge"><i></i> Портфолио</span>
+        <span class="badge">Обновляется по мере новых кейсов</span>
+      </div>
+
+      <h1 class="title">Щебланина Ольга Леонидовна</h1>
+      <p class="subtitle">
+        Портфолио AI-навыков: практическое применение нейросетей и ChatGPT для автоматизации,
+        аналитики и подготовки управленческих материалов.
+      </p>
+
+      <div class="meta">
+        <span class="pill focusable" tabindex="0">Фокус: финансы · процессы · презентации</span>
+        <span class="pill focusable" tabindex="0">Подход: «понятно, структурно, внедряемо»</span>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <div class="h2">
+          <h2>1. Ключевые AI-навыки и практические кейсы</h2>
+          <span class="accent-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="cards">
+          <article class="card focusable" tabindex="0">
+            <div class="kicker"><span class="dot"></span> ОСНОВА</div>
+            <h3>Понимаю и объясняю AI простым языком</h3>
+            <p>Различаю ИИ, нейросети и ChatGPT — умею объяснить разницу простыми словами.</p>
+          </article>
+
+          <article class="card focusable" tabindex="0">
+            <div class="kicker"><span class="dot"></span> ПРОЦЕССЫ</div>
+            <h3>Регламенты и автоматизация рутины</h3>
+            <p>Создание регламентов и автоматизация повторяющихся задач в повседневной работе.</p>
+          </article>
+
+          <article class="card focusable" tabindex="0">
+            <div class="kicker"><span class="dot"></span> ФИНАНСЫ</div>
+            <h3>Финансовая аналитика и поддержка решений</h3>
+            <p>Анализ финансового состояния, план-факт, поиск зависимостей и рекомендации по вопросам ФД.</p>
+          </article>
+
+          <article class="card focusable" tabindex="0">
+            <div class="kicker"><span class="dot"></span> КОММУНИКАЦИИ</div>
+            <h3>Создание презентаций и управленческих материалов</h3>
+            <p>Быстрое создание структурированных материалов: логика, тезисы, оформление.</p>
+          </article>
+        </div>
+
+        <div class="case" role="group" aria-label="Примеры кейсов">
+          <div class="case-title">
+            <strong>Примеры кейсов</strong>
+            <span class="flag">КЕЙСЫ</span>
+          </div>
+          <ul>
+            <li>Формирование ковенантных пакетов договоров и типовых формулировок.</li>
+            <li>Анализ финансового состояния компаний и подготовка выводов для руководства.</li>
+            <li>План-факт анализ и выявление отклонений + варианты управленческих решений.</li>
+            <li>Поиск альтернативных зависимостей и рекомендации по вопросам финансового директора.</li>
+            <li>Подготовка презентаций: структура, визуальная логика, корректный tone of voice.</li>
+          </ul>
+        </div>
+
+        <div class="sep" aria-hidden="true"></div>
+
+        <div class="h2">
+          <h2>Инструменты</h2>
+          <span class="accent-line" aria-hidden="true"></span>
+        </div>
+
+        <div class="tags" aria-label="Инструменты в виде тегов">
+          <span class="tag focusable" tabindex="0"><b>#</b> ChatGPT</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Нейросети</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Промт-инжиниринг</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Регламенты</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Автоматизация</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Финансовый анализ</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> План-факт</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Ковенанты</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Презентации</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> HTML</span>
+          <span class="tag focusable" tabindex="0"><b>#</b> Скрипты</span>
+        </div>
+      </section>
+
+      <aside class="side">
+        <section>
+          <div class="h2">
+            <h2>Достижения</h2>
+            <span class="accent-line" aria-hidden="true"></span>
+          </div>
+
+          <div class="stat">
+            <div class="box">
+              <div class="label">Достижение</div>
+              <div class="value">Инвестиционный меморандум (FMCG)</div>
+              <div class="desc">
+                С привлечением ИИ разработан инвестиционный меморандум: структура, формулировки,
+                ускорение подготовки и вычитки.
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="label">Практика</div>
+              <div class="value">Промты для скриптов и HTML</div>
+              <div class="desc">
+                Написание промтов для генерации скриптов и HTML-разметки, ускорение прототипирования
+                и оформления материалов.
+              </div>
+            </div>
+          </div>
+
+          <footer>
+            <span>© Портфолио AI-навыков</span>
+            <span style="font-family:var(--mono);">v2 · light</span>
+          </footer>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    // Клавиатурный фокус: аккуратная подсветка
+    document.querySelectorAll('.focusable').forEach(el => {
+      el.addEventListener('focus', () => el.style.boxShadow = 'var(--ring)');
+      el.addEventListener('blur', () => el.style.boxShadow = '');
+    });
+  </script>
+</body>
+</html>
